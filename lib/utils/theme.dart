@@ -11,7 +11,7 @@ final List<BoxShadow> shadow = <BoxShadow>[
   const BoxShadow(
     color: Colors.black12,
     offset: Offset(0.0, 3.0),
-    blurRadius: 4.0,
+    blurRadius: 12.0,
     spreadRadius: 1.0,
   ),
 ];

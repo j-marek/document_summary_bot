@@ -153,7 +153,7 @@ class _UploadCardState extends State<UploadCard> {
       ),
       backgroundColor: Colors.white,
       title: Text(
-        "$_type | $_style",
+        "$type | $style",
         style: const TextStyle(
           color: theme.textColor,
           fontSize: 24.0,
@@ -215,8 +215,11 @@ class _UploadCardState extends State<UploadCard> {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        width: 500.0,
-        margin: const EdgeInsets.all(48.0),
+        width: 400.0,
+        margin: const EdgeInsets.symmetric(
+          vertical: 48.0,
+          horizontal: 12.0,
+        ),
         padding: const EdgeInsets.all(12.0),
         decoration: BoxDecoration(
           color: theme.bgPrimaryColor,
@@ -224,6 +227,7 @@ class _UploadCardState extends State<UploadCard> {
             color: theme.greyColor,
             width: 1.0,
           ),
+          boxShadow: theme.shadow,
           borderRadius: theme.borderRadius,
         ),
         child: Column(
