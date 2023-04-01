@@ -21,6 +21,11 @@ jobs:
       - name: Enable Flutter web
         run: flutter config --enable-web
 
+      - name: Replace secret key
+      - run: echo OPEN_AI | base64 -d > lib/secrets.dart
+        env:
+          OPEN_AI: ${{ secrets.OPEN_AI }}
+
       - name: Install dependencies
         run: flutter packages get
 
