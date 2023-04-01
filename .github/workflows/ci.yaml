@@ -17,6 +17,6 @@ jobs:
         env:
           OPEN_AI: ${{ secrets.OPEN_AI }}
         # … put your steps here
-      - run: flutter pub get
-      - run: flutter pub global run peanut
-      - run: git push origin --set-upstream gh-pages
+#      - run: flutter pub get
+#      - run: flutter pub global run peanut
+#      - run: git push origin --set-upstream gh-pages
