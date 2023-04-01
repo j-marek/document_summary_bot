@@ -1,5 +1,4 @@
 import 'package:dart_openai/openai.dart';
-import 'package:document_summary_bot/auth/keys.dart';
 
 
 Future<String> summarize({
@@ -8,10 +7,7 @@ Future<String> summarize({
   required String style,
 }) async {
 
-  SecretLoader secretLoader = SecretLoader(secretPath: "assets/secrets.json");
-  Secret secret = await secretLoader.load();
-
-  OpenAI.apiKey = secret.apikey;
+  OpenAI.apiKey = "";
   OpenAIChatCompletionModel chatCompletion = await OpenAI.instance.chat.create(
     model: "gpt-3.5-turbo",
     messages: [
