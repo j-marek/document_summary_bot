@@ -1,6 +1,4 @@
-import 'dart:async' show Future;
-import 'dart:convert' show json;
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:document_summary_bot/auth/secrets.dart';
 
 
 class Secret {
@@ -15,14 +13,12 @@ class Secret {
 
 
 class SecretLoader {
-  final String secretPath;
+  final String secretName;
 
-  SecretLoader({required this.secretPath});
+  SecretLoader({required this.secretName});
 
-  Future<Secret> load() {
-    return rootBundle.loadStructuredData<Secret>(secretPath, (jsonStr) async {
-      final secret = Secret.fromJson(json.decode(jsonStr));
-      return secret;
-    });
+  Secret load() {
+    final secret = Secret(apikey: secrets[secretName]);
+    return secret;
   }
 }
