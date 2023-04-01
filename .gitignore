@@ -32,6 +32,9 @@ migrate_working_dir/
 .pub/
 /build/
 
+# Secrets
+/assets/secrets.json
+
 # Symbolication related
 app.*.symbols
 

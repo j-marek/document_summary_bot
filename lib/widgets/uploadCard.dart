@@ -39,7 +39,7 @@ class _UploadCardState extends State<UploadCard> {
       dropdownColor: theme.bgPrimaryColor,
       underline: const SizedBox(),
       isExpanded: true,
-      items: <String>["Summarize", "Abstract"].map((String value) {
+      items: <String>["Summarize", "Abstract", "Explain"].map((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),
@@ -67,7 +67,7 @@ class _UploadCardState extends State<UploadCard> {
       dropdownColor: theme.bgPrimaryColor,
       underline: const SizedBox(),
       isExpanded: true,
-      items: <String>["Professional", "Plain", "Simple"].map((String value) {
+      items: <String>["Professional", "Normal", "Simple"].map((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),
@@ -99,7 +99,7 @@ class _UploadCardState extends State<UploadCard> {
         splashColor: theme.bgPrimaryColor.withOpacity(0.1),
         hoverColor: theme.bgPrimaryColor.withOpacity(0.05),
         onTap: () async {
-          if(inputText != null) {
+          if(inputText != null && !isLoading) {
             setState(() {
               isLoading = true;
             });
@@ -148,10 +148,13 @@ class _UploadCardState extends State<UploadCard> {
 
   Widget _buildPopupDialog(BuildContext context, String text) {
     return AlertDialog(
-      backgroundColor: theme.bgPrimaryColor,
-      title: const Text(
-        "Summary",
-        style: TextStyle(
+      shape: RoundedRectangleBorder(
+        borderRadius: theme.borderRadius,
+      ),
+      backgroundColor: Colors.white,
+      title: Text(
+        "$_type | $_style",
+        style: const TextStyle(
           color: theme.textColor,
           fontSize: 24.0,
         ),
@@ -164,7 +167,6 @@ class _UploadCardState extends State<UploadCard> {
             child: Text(
               text,
               style: const TextStyle(
-                color: theme.textColor,
                 fontSize: 16.0,
               ),
             ),

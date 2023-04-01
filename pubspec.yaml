@@ -39,6 +39,8 @@ dependencies:
   flutter_dropzone: ^3.0.5
   dotted_border: ^2.0.0+3
   syncfusion_flutter_pdf: ^21.1.37
+  http: ^0.13.5
+  dart_openai: ^1.9.1
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +67,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/pwc_logo.png
+    - assets/secrets.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
