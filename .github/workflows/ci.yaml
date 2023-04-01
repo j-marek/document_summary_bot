@@ -10,9 +10,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    name: Decode base64 secrets and deploy to web
     steps:
       - uses: actions/checkout@v2
-      - name: Decode base64 secrets
       - run: echo $OPEN_AI | base64 -d > lib/path/to/secrets.dart
         env:
           OPEN_AI: ${{ secrets.OPEN_AI }}
