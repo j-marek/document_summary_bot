@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ gh-pages ]
 
   # Allows to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -13,16 +13,6 @@ jobs:
     name: Decode base64 secrets and deploy to web
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-java@v1
-        with:
-          java-version: "12.x"
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: "stable"
-      - run: echo $OPEN_AI | base64 -d > lib/auth/secrets.dart
+      - run: echo $OPEN_AI | base64 -d > assets/assets/secrets.json
         env:
           OPEN_AI: ${{ secrets.OPEN_AI }}
-        # … put your steps here
-      - run: flutter pub get
-      - run: flutter pub global run peanut
-      - run: git push origin --set-upstream gh-pages

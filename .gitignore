@@ -33,7 +33,7 @@ migrate_working_dir/
 /build/
 
 # Secrets
-/lib/auth/secrets.dart
+/assets/secrets.json
 
 # Symbolication related
 app.*.symbols

@@ -8,8 +8,8 @@ Future<String> summarize({
   required String style,
 }) async {
 
-  SecretLoader secretLoader = SecretLoader(secretName: "open_ai");
-  Secret secret = secretLoader.load();
+  SecretLoader secretLoader = SecretLoader(secretPath: "assets/secrets.json");
+  Secret secret = await secretLoader.load();
 
   OpenAI.apiKey = secret.apikey;
   OpenAIChatCompletionModel chatCompletion = await OpenAI.instance.chat.create(

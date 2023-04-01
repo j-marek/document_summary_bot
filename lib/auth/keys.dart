@@ -1,4 +1,6 @@
-import 'package:document_summary_bot/auth/secrets.dart';
+import 'dart:async' show Future;
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
 
 
 class Secret {
@@ -7,18 +9,20 @@ class Secret {
   Secret({this.apikey=""});
 
   factory Secret.fromJson(Map<String, dynamic>jsonMap){
-    return Secret(apikey:jsonMap["api_key"]);
+    return Secret(apikey:jsonMap["open_ai"]);
   }
 }
 
 
 class SecretLoader {
-  final String secretName;
+  final String secretPath;
 
-  SecretLoader({required this.secretName});
-
-  Secret load() {
-    final secret = Secret(apikey: secrets[secretName]);
-    return secret;
+  SecretLoader({required this.secretPath});
+  Future<Secret> load() {
+    return rootBundle.loadStructuredData<Secret>(secretPath,
+            (jsonStr) async {
+          final secret = Secret.fromJson(json.decode(jsonStr));
+          return secret;
+        });
   }
 }
